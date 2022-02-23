@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Математика</title>
+	<link rel="stylesheet" href="styles.css">
+	<script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+	<!-- <div id = "box">
+		
+		<div id="Panel">
+			<H1>MATH.ESE</H1>
+			<p id="prim"></p>
+			<br>
+			<input id="answer" type="text">
+			<br>
+			<button id="give_answ">OK</button>
+			<br>
+			<button id="gen">Generyc</button>
+			<br>
+			<p id="corr"></p>
+		</div>
+	</div> -->
+
+	<div class="decor">
+		<div class="form-left-decoration"></div>
+			<div class="form-right-decoration"></div>
+				<div class="circle"></div>
+					<div class="form-inner">
+						<h3>MATH.ESE</h3>
+						<h3 id="prim"></h3>
+						<input id="answer" type="text">
+
+	<!-- <input type="submit" value="Отправить"> -->
+
+						<button id="give_answ">OK</button>
+
+						<button id="gen">Generyc</button>
+					<h3 id="corr"></h3>
+		</div>
+	</div>
+
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+	<script type="text/javascript">
+		
+		async function generation(){
+			let prim = await eel.genericPrim()();
+			document.getElementById('prim').innerHTML = prim;
+		}
+		async function answering(){
+			answ = await eel.genericAnsw(document.getElementById('prim').textContent)();
+			console.log(answ);
+			let answ_1 = document.getElementById('answer').value;
+			if(answ_1 == answ){
+				document.getElementById('corr').innerHTML = "Молодец правильно 😸";
+			} else {
+				document.getElementById('corr').innerHTML = "Подумай ещё 😿";
+			}
+		}
+		document.getElementById('gen').onclick = function(){
+      		generation();
+    	}
+		document.getElementById('give_answ').onclick = function(){
+			answering();
+		}
+	</script>
+</body>
+</html>
